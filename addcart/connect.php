@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <?php
+<?php
 //     $servername = "localhost:3306";
 //     $username = "root";
 //     $password = "";
@@ -19,7 +10,7 @@
 //     }
 
 // // Create database
-//     $sql = "CREATE DATABASE Demo";
+//     $sql = "CREATE DATABASE addcart";
 //         if ($conn->query($sql) === TRUE) {
 //     echo "Cơ sở dữ liệu được tạo thành công";
 //         } else {
@@ -27,13 +18,13 @@
 //         }
 
 //     $conn->close();
-    ?>
+?>
 
 <?php
 $servername = "localhost:3306";
 $username = "root";
 $password = "";
-$dbname = "Demo";
+$dbname = "addcart";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -43,20 +34,17 @@ if (!$conn) {
 }
 
 // sql to create table
-// $kh = "CREATE TABLE SanPham (
-// ID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-// TenSanpham VARCHAR(30) NOT NULL,
-// AnhSanpham VARCHAR(30) NOT NULL,
-// GiaSanpham VARCHAR(50),
+// $pro = "CREATE TABLE products (
+// id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+// ten VARCHAR(30) NOT NULL,
+// anh TEXT NOT NULL,
+// gia DOUBLE(10,2),
 // reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 // )";
 
-// $dh = "CREATE TABLE DonHang (
-//     OrderID INT(6) PRIMARY KEY,
-//     CustomerID INT(2) NOT NULL, 
-//     EmployeeID INT(2) NOT NULL,
-//     OrderDate DATE,
-//     ShipperID INT(1)
+// $anh = "CREATE TABLE upanh (
+// id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+// anh TEXT NOT NULL
 //     )";
 
 // $ct = "CREATE TABLE ChiTiet (
@@ -66,13 +54,13 @@ if (!$conn) {
 //     Quantity INT(3)
 //     )";
 
-// if (mysqli_query($conn, $kh)) {
+// if (mysqli_query($conn, $pro)) {
 //   echo "Table  được tạo thành công";
 // } else {
 //   echo "Kết nối thất bại: " . mysqli_error($conn);
 // }
 
-// if (mysqli_query($conn, $dh)) {
+// if (mysqli_query($conn, $anh)) {
 //     echo "Table  được tạo thành công";
 //   } else {
 //     echo "Kết nối thất bại: " . mysqli_error($conn);
@@ -85,8 +73,8 @@ if (!$conn) {
 //   }
 
 
-// $sql1 = "INSERT INTO KhachHang (CustomerName, ContactName, AddressName, City, PostalCode, Country)
-// VALUES ('Nguyen Van A', 'Maria Anders', 'Obere Str. 57', 'Seattle', '98128', 'USA');";
+// $sql = "INSERT INTO products (ten, anh, gia)
+// VALUES ('San pham 1', 'Maria Anders', 'Obere Str. 57', 'Seattle', '98128', 'USA');";
 // $sql1 .= "INSERT INTO KhachHang (CustomerName, ContactName, AddressName, City, PostalCode, Country)
 // VALUES ('Dang Thi B', 'Ana Trujillo', 'Mataderos 2312', 'Helsinki', '21240', 'Finland');";
 // $sql1 .= "INSERT INTO KhachHang (CustomerName, ContactName, AddressName, City, PostalCode, Country)
@@ -185,7 +173,5 @@ if (!$conn) {
 //   echo "Lỗi: " . $sql . "<br>" . $conn->error;
 // }
 
-$conn->close();
+// $conn->close();
   ?>
-</body>
-</html>
