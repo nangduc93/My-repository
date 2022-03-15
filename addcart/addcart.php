@@ -1,24 +1,11 @@
 <?php
 include "header.php";
 include "connect.php";
-
-//   $servername = "localhost:3306";
-//   $username = "root";
-//   $password = "";
-//   $dbname = "addcart";
-  
-//   // Create connection
-//   $conn = mysqli_connect($servername, $username, $password, $dbname);
-//   // Check connection
-//   if (!$conn) {
-//     die("Kết nối thất bại: " . mysqli_connect_error());
-//   }
-
-session_start();
+include "cart-function.php";
 
 $cart = (isset($_SESSION['cart'])) ? $_SESSION['cart'] : [];
-echo "<pre>";
-print_r($cart);
+// echo "<pre>";
+// print_r($cart);
 ?>
 
 <!DOCTYPE html>
@@ -47,12 +34,8 @@ print_r($cart);
             </tr>
         </thead>
         <tbody>
-           <?php
-           $total_price = 0;
-           ?>
             <?php
             foreach ($cart as $key => $value) {
-                $total_price += $value['gia'] * $value['quanlity'];
             ?>
             <tr>
                 <td><?php echo $value['id'] ?></td>
@@ -72,9 +55,11 @@ print_r($cart);
             </tr>
             <?php } ?>
             <tr>
-                <td>Tong tien</td>
-                <td class="bg-info text-center" colspan="6">
-                    <?php echo number_format($total_price) ?>VND</td>
+                <td>Tổng</td>
+                <td colspan="2"></td>
+                <td bg-success text-center>Đơn giá:  <?php echo (total_item($cart)) ?></td>
+                <td class="bg-info text-center" colspan="2">
+                    <?php echo number_format(total_price($cart)) ?> VND</td>
             </tr>
         </tbody>
     </table>

@@ -1,17 +1,5 @@
 <?php
-// include "connect.php";
-
-//   $servername = "localhost:3306";
-//   $username = "root";
-//   $password = "";
-//   $dbname = "addcart";
-  
-//   // Create connection
-//   $conn = mysqli_connect($servername, $username, $password, $dbname);
-//   // Check connection
-//   if (!$conn) {
-//     die("Kết nối thất bại: " . mysqli_connect_error());
-//   }
+include "connect.php";
 
 session_start();
 
@@ -21,6 +9,10 @@ if(isset($_GET['id'])) {
 
 $action = (isset($_GET['action'])) ? $_GET['action'] : 'add';
 $quantity = (isset($_GET['quantity'])) ? $_GET['quantity'] : 1;
+
+if($quantity <= 0) {
+    $quantity = 1;
+}
 // var_dump($_GET);
 // echo $action;
 // die;
