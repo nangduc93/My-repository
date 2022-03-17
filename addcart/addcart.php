@@ -3,6 +3,20 @@ include "header.php";
 include "connect.php";
 include "cart-function.php";
 
+//   $servername = "localhost:3306";
+//   $username = "root";
+//   $password = "";
+//   $dbname = "addcart";
+  
+//   // Create connection
+//   $conn = mysqli_connect($servername, $username, $password, $dbname);
+//   // Check connection
+//   if (!$conn) {
+//     die("Kết nối thất bại: " . mysqli_connect_error());
+//   }
+
+session_start();
+
 $cart = (isset($_SESSION['cart'])) ? $_SESSION['cart'] : [];
 // echo "<pre>";
 // print_r($cart);
@@ -34,12 +48,16 @@ $cart = (isset($_SESSION['cart'])) ? $_SESSION['cart'] : [];
             </tr>
         </thead>
         <tbody>
+           <?php
+        //    $total_price = 0;
+           ?>
             <?php
             foreach ($cart as $key => $value) {
+                // $total_price += ($value['gia'] * $value['quantity']);
             ?>
             <tr>
                 <td><?php echo $value['id'] ?></td>
-                <td><img src="<?php echo $value['anh'] ?>" alt="" width="100px"></td>
+                <td><img src="images/<?php echo $value['anh'] ?>" alt="" width="100px"></td>
                 <td><?php echo $value['ten'] ?></td>
                 <td>
                     <form action="cart.php" class="form-inline">
@@ -55,11 +73,12 @@ $cart = (isset($_SESSION['cart'])) ? $_SESSION['cart'] : [];
             </tr>
             <?php } ?>
             <tr>
-                <td>Tổng</td>
+                <td>Tong</td>
                 <td colspan="2"></td>
-                <td bg-success text-center>Đơn giá:  <?php echo (total_item($cart)) ?></td>
+                <td class="bg-success text-center">Don hang: <?php echo (total_item($cart)) ?></td>
                 <td class="bg-info text-center" colspan="2">
                     <?php echo number_format(total_price($cart)) ?> VND</td>
+                <td><a href="cart.php?id=<?php echo $value["id"] ?>&action=remove" class="btn btn-danger">Trong</a></td>
             </tr>
         </tbody>
     </table>

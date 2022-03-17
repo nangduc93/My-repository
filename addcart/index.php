@@ -44,7 +44,7 @@ $result = $conn->query($sql);
       <div class="col">
         <form action="cart.php?id=<?php echo $row["id"] ?>" method="post">
           <div class="card" style="width: 18rem;">
-            <img src="<?php echo $row["anh"]; ?>" class="card-img-top" alt="...">
+            <img src="images/<?php echo $row["anh"]; ?>" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title"><?php echo $row["ten"]; ?></h5>
               <p class="card-text"><?php echo "$".$row["gia"]; ?></p>
