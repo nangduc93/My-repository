@@ -42,9 +42,10 @@ if (!$conn) {
 // reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 // )";
 
-// $anh = "CREATE TABLE upanh (
+// $anh = "CREATE TABLE addcart (
 // id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-// anh TEXT NOT NULL
+// id_product INT(6) UNIQUE NOT NULL,
+// soluong TINYINT(4) NOT NULL
 //     )";
 
 // $ct = "CREATE TABLE ChiTiet (

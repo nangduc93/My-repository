@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: localhost
--- Thời gian đã tạo: Th3 17, 2022 lúc 08:54 AM
--- Phiên bản máy phục vụ: 10.4.22-MariaDB
--- Phiên bản PHP: 8.1.1
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th3 28, 2022 lúc 01:17 AM
+-- Phiên bản máy phục vụ: 10.4.20-MariaDB
+-- Phiên bản PHP: 7.3.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,27 @@ SET time_zone = "+00:00";
 --
 -- Cơ sở dữ liệu: `addcart`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `addcart`
+--
+
+CREATE TABLE `addcart` (
+  `id` int(6) UNSIGNED NOT NULL,
+  `id_product` int(6) NOT NULL,
+  `soluong` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `addcart`
+--
+
+INSERT INTO `addcart` (`id`, `id_product`, `soluong`) VALUES
+(1, 1, 1),
+(12, 2, 1),
+(13, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -40,14 +61,20 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `ten`, `anh`, `gia`, `reg_date`) VALUES
-(1, 'san pham 1', 'hoa-qua-5.jpg', 10000.00, '2022-03-17 04:44:29'),
-(2, 'san pham 2', 'hoa-qua-2.jpg', 20000.00, '2022-03-17 04:34:04'),
-(3, 'san pham 3', 'hoa-qua-3.jpg', 30000.00, '2022-03-17 04:35:27'),
-(4, 'san pham 4', 'hoa-qua-4.jpg', 40000.00, '2022-03-17 04:35:49');
+(1, 'san pham 1', 'hoa-qua-1.jpg', 10000.00, '2022-03-18 14:05:49'),
+(2, 'san pham 2', 'hoa-qua-2.jpg', 20000.00, '2022-03-18 14:06:09'),
+(3, 'san pham 2', 'hoa-qua-3.jpg', 30000.00, '2022-03-18 14:06:27');
 
 --
 -- Chỉ mục cho các bảng đã đổ
 --
+
+--
+-- Chỉ mục cho bảng `addcart`
+--
+ALTER TABLE `addcart`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id_product` (`id_product`);
 
 --
 -- Chỉ mục cho bảng `products`
@@ -60,10 +87,16 @@ ALTER TABLE `products`
 --
 
 --
+-- AUTO_INCREMENT cho bảng `addcart`
+--
+ALTER TABLE `addcart`
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
