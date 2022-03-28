@@ -71,7 +71,7 @@ if(!empty($_GET["action"])) {
                 <td><img src="images/<?php echo $row['anh'] ?>" alt="" width="100px"></td>
                 <td><?php echo $row['ten'] ?></td>
                 <td>
-                    <form action="index1.php?action=update"  method="post">
+                    <form action="index.php?action=update"  method="post">
                         <input type="hidden" name="id" value="<?php echo $row['id_product'] ?>">
                     <input type="text" name="soedit" value="<?php echo $row['soluong'] ?>">
                     <button type="submit" name="update" class="btn btn-success">Cập nhật</button>
@@ -79,7 +79,7 @@ if(!empty($_GET["action"])) {
                 </td>
                 <td><?php echo $row['gia'] ?></td>
                 <td><?php echo number_format($row['gia'] * $row['soluong']) ?></td>
-                <td><form action="index1.php?action=delete" method="post">
+                <td><form action="index.php?action=delete" method="post">
                         <input type="hidden" name="id" value="<?php
                         echo $table['id_product']
                         ?>">
@@ -93,7 +93,7 @@ if(!empty($_GET["action"])) {
                 <td class="bg-success text-center">Don hang: <?php echo $total_item; ?></td>
                 <td class="bg-info text-center" colspan="2">
                     <?php echo $total_price; ?> VND</td>
-                <td><form action="index1.php?action=remove" method="post">
+                <td><form action="index.php?action=remove" method="post">
                     <button type="submit" name="remove" class="btn btn-danger">Trong</button>
                     </form></td>
             </tr>
