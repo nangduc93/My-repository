@@ -112,7 +112,7 @@ if(!empty($_GET["action"])) {
     foreach ($result as $form) {
       ?>
       <div class="col">
-        <form action="index1.php?action=add" method="post">
+        <form action="index.php?action=add" method="post">
           <div class="card" style="width: 18rem;">
             <img src="images/<?php echo $form["anh"]; ?>" class="card-img-top" alt="...">
             <div class="card-body">
