@@ -6,8 +6,8 @@ if(isset($_POST['id'])) {
   $id = $_POST['id'];
 }
 
-if(!empty($_GET["action"])) {
-  switch($_GET["action"]) {
+if(!empty($_POST["action"])) {
+  switch($_POST["action"]) {
      case "add":
       $so = $_POST['so'];
        $add = $conn->query("INSERT INTO addcart (id_product, soluong) VALUES ($id, $so) ON DUPLICATE KEY UPDATE soluong = soluong + 1");
@@ -18,6 +18,7 @@ if(!empty($_GET["action"])) {
      break;
  case "delete":
      $del = $conn->query("DELETE FROM addcart WHERE id_product = $id");
+    echo 3;
      break;
   case "remove":
      $rem = $conn->query("DELETE FROM addcart");
@@ -71,7 +72,8 @@ if(!empty($_GET["action"])) {
                 <td><img src="images/<?php echo $row['anh'] ?>" alt="" width="100px"></td>
                 <td><?php echo $row['ten'] ?></td>
                 <td>
-                    <form action="index.php?action=update"  method="post">
+                    <form action="index.php"  method="post">
+                    <input type="hidden" name="action" value="update">
                         <input type="hidden" name="id" value="<?php echo $row['id_product'] ?>">
                     <input type="text" name="soedit" value="<?php echo $row['soluong'] ?>">
                     <button type="submit" name="update" class="btn btn-success">Cập nhật</button>
@@ -79,9 +81,10 @@ if(!empty($_GET["action"])) {
                 </td>
                 <td><?php echo $row['gia'] ?></td>
                 <td><?php echo number_format($row['gia'] * $row['soluong']) ?></td>
-                <td><form action="index.php?action=delete" method="post">
+                <td><form action="index.php" method="post">
+                <input type="hidden" name="action" value="delete">
                         <input type="hidden" name="id" value="<?php
-                        echo $table['id_product']
+                        echo $row['id_product']
                         ?>">
                     <button type="submit" name="delete" class="btn btn-danger">Xoa</button>
                     </form></td>
@@ -93,7 +96,8 @@ if(!empty($_GET["action"])) {
                 <td class="bg-success text-center">Don hang: <?php echo $total_item; ?></td>
                 <td class="bg-info text-center" colspan="2">
                     <?php echo $total_price; ?> VND</td>
-                <td><form action="index.php?action=remove" method="post">
+                <td><form action="index.php" method="post">
+                <input type="hidden" name="action" value="remove">
                     <button type="submit" name="remove" class="btn btn-danger">Trong</button>
                     </form></td>
             </tr>
@@ -112,7 +116,8 @@ if(!empty($_GET["action"])) {
     foreach ($result as $form) {
       ?>
       <div class="col">
-        <form action="index.php?action=add" method="post">
+        <form action="index.php" method="post">
+        <input type="hidden" name="action" value="add">
           <div class="card" style="width: 18rem;">
             <img src="images/<?php echo $form["anh"]; ?>" class="card-img-top" alt="...">
             <div class="card-body">
