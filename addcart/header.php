@@ -28,17 +28,11 @@
 <div class="container-fluid">
 <a href="" class="navbar-brand">Title</a>
     <ul class="nav navbar-nav">
-        <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
-        </li>
         <li class="nav-item">
             <a class="nav-link" href="index.php">San pham</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="form-insert.php">Them san pham</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="addcart.php">Gio hang</a>
         </li>
     </ul>
 </div>
